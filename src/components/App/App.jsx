@@ -1,23 +1,34 @@
+import { lazy, Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-// import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import css from './App.module.css';
+import Header from 'components/Header/Header';
+
+const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
+const MoviesPage = lazy(() => import('../../pages/MoviesPage/MoviePage'));
+const MoviesDetalis = lazy(() =>
+  import('../../pages/MovieDetalisPage/MovieDetalisPage')
+);
+const CastMovie = lazy(() => import('../Cast/Cast'));
+const Reviews = lazy(() => import('../Reviews/Reviews'));
 
 function App() {
   return (
     <>
       <ToastContainer />
-      <div
-        style={{
-          height: '100vh',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: 40,
-          color: '#010101',
-        }}
-      >
-        React homework template
-      </div>
+      <Header />
+      <Suspense fallback={<div className={css.loader}>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="movies" element={<MoviesPage />} />
+          <Route path="/movies/:movieId" element={<MoviesDetalis />}>
+            <Route path="cast" element={<CastMovie />} />
+            <Route path="review" element={<Reviews />} />
+          </Route>
+          <Route path="*" element={<HomePage />} />
+        </Routes>
+      </Suspense>
     </>
   );
 }

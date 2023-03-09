@@ -1,0 +1,18 @@
+.moviesList {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 50px;
+}
+
+.moviesItem {
+    padding: 10px;
+    background: #c21500;
+    background: -webkit-linear-gradient(to right, #ffc500, #c21500);
+    background: linear-gradient(to right, #ffc500, #c21500);
+}
+
+.MoviesList_moviesItem {
+    width: 200px;
+}

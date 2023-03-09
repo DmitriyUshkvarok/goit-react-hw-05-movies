@@ -1,0 +1,7 @@
+.header {
+    background: #c21500;
+    background: -webkit-linear-gradient(to right, #ffc500, #c21500);
+    background: linear-gradient(to right, #ffc500, #c21500);
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
