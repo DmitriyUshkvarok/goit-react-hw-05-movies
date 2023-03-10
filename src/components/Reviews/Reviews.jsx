@@ -38,6 +38,7 @@ function Review() {
             reviews.map(({ author, content, id }) => (
               <div className={css.reviewListItem} key={id}>
                 <p className={css.author}>Author: {author}</p>
+
                 <p className={css.content}>Content:{content}</p>
               </div>
             ))

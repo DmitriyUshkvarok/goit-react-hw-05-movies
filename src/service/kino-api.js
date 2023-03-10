@@ -2,15 +2,15 @@ import axios from 'axios';
 const URL = `https://api.themoviedb.org/3/`;
 const key = 'f27eea818d2010463700365b0c06a16e';
 
-function fetchTrending() {
+function fetchTrending(page = 1) {
   return axios
-    .get(`${URL}trending/all/day?api_key=${key}`)
+    .get(`${URL}trending/all/day?api_key=${key}&page=${page}`)
     .then(response => response.data.results);
 }
 
-function fetchSearchMovie(query) {
+function fetchSearchMovie(query, page = 1) {
   return axios
-    .get(`${URL}search/movie?query=${query}&api_key=${key}`)
+    .get(`${URL}search/movie?query=${query}&api_key=${key}&page=${page}`)
     .then(response => response.data.results);
 }
 

@@ -1,37 +1,52 @@
 import css from './HomePage.module.css';
 import Container from 'components/Container/Container';
 import MoviesList from 'components/MoviesList/MoviesList';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import apiTheMovieDB from 'service/kino-api';
+import { toast } from 'react-toastify';
+
 function HomePage() {
   const [movies, setMovies] = useState([]);
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  useEffect(() => {
-    setIsLoading(true);
+  const fetchMovies = useCallback(page => {
     apiTheMovieDB
-      .fetchTrending()
-      .then(movies => setMovies([...movies]))
-      .catch(error => {
-        setError(error);
-        setIsLoading(false);
+      .fetchTrending(page)
+      .then(newMovies => {
+        if (newMovies.length === 0) {
+          toast.error('sorry ,thats all the movies we cold find');
+        }
+        setMovies(prevMovies => [...prevMovies, ...newMovies]);
+        setCurrentPage(prevPage => prevPage + 1);
       })
-      .finally(setIsLoading(false));
+      .catch(error => {
+        console.error(error);
+      });
   }, []);
 
-  if (isLoading) {
-    return <p>Loading...</p>;
+  function handleLoadMore() {
+    fetchMovies(currentPage);
   }
 
-  if (error) {
-    return <p>{error.message}</p>;
-  }
+  useEffect(() => {
+    fetchMovies(currentPage);
+  }, [fetchMovies, currentPage]);
 
   return (
     <section className={css.trandingMovies}>
-      <Container>{movies && <MoviesList movies={movies} />}</Container>
+      <InfiniteScroll
+        dataLength={movies.length}
+        next={handleLoadMore}
+        hasMore={true}
+        loader={<p>Loading...</p>}
+      >
+        <Container>
+          <MoviesList movies={movies} />
+        </Container>
+      </InfiniteScroll>
     </section>
   );
 }
+
 export default HomePage;

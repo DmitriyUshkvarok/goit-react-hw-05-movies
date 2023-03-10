@@ -67,8 +67,8 @@ function MovieDetalis() {
                   Cast
                 </Link>
               </li>
+
               <li className={css.reviewiLstItem}>
-                {' '}
                 <Link
                   to={`/movies/${movieId}/review`}
                   state={{ from: location }}
