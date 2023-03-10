@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import { GiReturnArrow } from 'react-icons/gi';
 import css from './MovieDetalis.module.css';
 import Container from 'components/Container/Container';
 import { useParams, useLocation, Link, Outlet } from 'react-router-dom';
@@ -24,6 +24,7 @@ function MovieDetalis() {
             <div className={css.detalisWrapper}>
               <div className={css.columnInfo}>
                 <Link className={css.btnBack} type="button" to={backLink}>
+                  <GiReturnArrow className={css.iconBack} />
                   Go Back
                 </Link>
                 <h2 className={css.infoTitle}>
@@ -33,7 +34,9 @@ function MovieDetalis() {
                   User score: {(movie.vote_average * 10).toFixed(0)}%
                 </p>
                 <h3 className={css.overviewTitle}>Overview</h3>
-                <p className={css.overview}>{movie.overview}</p>
+                <p className={css.overview}>
+                  {movie.overview ? movie.overview : 'Movie without a overview'}
+                </p>
                 <ul className={css.ganreListDetails}>
                   {movie.genres &&
                     movie.genres.map(({ name, id }) => (
