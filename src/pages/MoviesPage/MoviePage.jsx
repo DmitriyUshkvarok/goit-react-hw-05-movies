@@ -14,10 +14,11 @@ const MoviePage = () => {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
+  const [hasMore, setHasMore] = useState(false);
 
   const fetchMovies = useCallback(
     page => {
+      setHasMore(true);
       apiTheMovieDB
         .fetchSearchMovie(query, page)
         .then(newMovies => {
@@ -72,11 +73,11 @@ const MoviePage = () => {
             <MoviesList movies={movies} />
           </InfiniteScroll>
         )}
-        {movies?.length === 0 && (
+        {/* {movies?.length === 0 && (
           <p>
             Oops! We couldn’t find anything =/. Change your request, please!
           </p>
-        )}
+        )} */}
       </Container>
     </section>
   );

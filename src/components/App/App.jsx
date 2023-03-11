@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import css from './App.module.css';
 import Header from 'components/Header/Header';
+import ScrollToTop from 'react-scroll-to-top';
 
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
 const MoviesPage = lazy(() => import('../../pages/MoviesPage/MoviePage'));
@@ -18,6 +19,7 @@ function App() {
     <>
       <ToastContainer />
       <Header />
+      <ScrollToTop className={css.scrolltotop} smooth />
       <Suspense fallback={<div className={css.loader}>Loading...</div>}>
         <Routes>
           <Route path="/" element={<HomePage />} />
