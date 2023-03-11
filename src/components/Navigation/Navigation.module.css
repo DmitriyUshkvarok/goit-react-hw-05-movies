@@ -16,3 +16,12 @@
     color: crimson;
     cursor: default;
 }
+
+.navigationLink {
+    color: rgb(29, 22, 22);
+    text-transform: uppercase;
+}
+
+.navigationLink:hover {
+    color: crimson;
+}

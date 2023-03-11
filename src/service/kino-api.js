@@ -32,12 +32,20 @@ function fetchMovieReview(id) {
     .then(response => response.data.results);
 }
 
+function fetchTrailerMovies(movieId) {
+  return axios
+    .get(`${URL}movie/${movieId}/videos?api_key=${key}`)
+    .then(response => response.data.results)
+    .catch(this.onError);
+}
+
 const apiTheMovieDB = {
   fetchTrending,
   fetchSearchMovie,
   fetchMovieDetalis,
   fetchMovieCredits,
   fetchMovieReview,
+  fetchTrailerMovies,
 };
 
 export default apiTheMovieDB;

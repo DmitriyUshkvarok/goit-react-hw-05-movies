@@ -73,11 +73,6 @@ const MoviePage = () => {
             <MoviesList movies={movies} />
           </InfiniteScroll>
         )}
-        {/* {movies?.length === 0 && (
-          <p>
-            Oops! We couldn’t find anything =/. Change your request, please!
-          </p>
-        )} */}
       </Container>
     </section>
   );

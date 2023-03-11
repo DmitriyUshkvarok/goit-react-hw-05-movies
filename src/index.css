@@ -8,11 +8,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #fe8c00;
+  background: #1e130c;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #f83600, #fe8c00);
+  background: -webkit-linear-gradient(to right, #9a8478, #1e130c);
   /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #f83600, #fe8c00);
+  background: linear-gradient(to right, #9a8478, #1e130c);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 

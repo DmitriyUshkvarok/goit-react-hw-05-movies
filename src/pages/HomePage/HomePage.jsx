@@ -18,7 +18,6 @@ function HomePage() {
       .fetchTrending(currentPage)
       .then(newMovies => {
         setIsFetching(false);
-
         if (newMovies.length === 0) {
           toast.error('sorry ,thats all the movies we cold find');
         }
@@ -28,7 +27,6 @@ function HomePage() {
       })
       .catch(error => {
         setIsFetching(false);
-        console.error(error);
       });
   }, [currentPage]);
 
