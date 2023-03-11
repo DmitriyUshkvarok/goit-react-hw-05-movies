@@ -28,7 +28,12 @@ function MovieDetalis() {
   }
 
   useEffect(() => {
-    apiTheMovieDB.fetchMovieDetalis(movieId).then(setMovie).catch('error');
+    apiTheMovieDB
+      .fetchMovieDetalis(movieId)
+      .then(data => {
+        setMovie(data);
+      })
+      .catch('error');
   }, [movieId]);
 
   useEffect(() => {
@@ -131,21 +136,13 @@ function MovieDetalis() {
             </div>
             <ul className={css.reviewList}>
               <li className={css.reviewiLstItem}>
-                <Link
-                  to={`/movies/${movieId}/cast`}
-                  state={{ from: location }}
-                  className={css.cast}
-                >
+                <Link to="cast" state={location.state} className={css.cast}>
                   Cast
                 </Link>
               </li>
 
               <li className={css.reviewiLstItem}>
-                <Link
-                  to={`/movies/${movieId}/review`}
-                  state={{ from: location }}
-                  className={css.review}
-                >
+                <Link to="review" state={location.state} className={css.review}>
                   Rewiew
                 </Link>
               </li>

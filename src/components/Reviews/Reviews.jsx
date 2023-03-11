@@ -14,7 +14,9 @@ function Review() {
     setIsLoading(true);
     apiTheMovieDB
       .fetchMovieReview(movieId)
-      .then(setReviews)
+      .then(data => {
+        setReviews(data);
+      })
       .catch(error => {
         setError(error);
         setIsLoading(false);
