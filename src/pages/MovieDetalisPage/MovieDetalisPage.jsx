@@ -15,8 +15,6 @@ function MovieDetalis() {
   const [trailerId, setTrailerId] = useState(null);
   const [urlModal, setUrlModal] = useState(false);
 
-  console.log(urlModal);
-
   function handleFetchTrailer() {
     apiTheMovieDB.fetchTrailerMovies(movieId).then(videos => {
       const trailer = videos.find(video => video.type === 'Trailer');
@@ -67,6 +65,15 @@ function MovieDetalis() {
     <>
       {movie && (
         <section className={css.detalis}>
+          <img
+            className={css.posrerMovie}
+            src={
+              movie.backdrop_path
+                ? `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`
+                : posterimg
+            }
+            alt={movie.title}
+          />
           <Container>
             <div className={css.detalisWrapper}>
               <div className={css.columnInfo}>
@@ -104,7 +111,7 @@ function MovieDetalis() {
                   style={{ cursor: 'pointer' }}
                   onClick={handleFetchTrailer}
                 />
-                {trailerId && (
+                {urlModal && trailerId && (
                   <div className={css.videoBackdrop} onClick={clickBackdrop}>
                     <GiReturnArrow
                       className={css.iconBackModal}

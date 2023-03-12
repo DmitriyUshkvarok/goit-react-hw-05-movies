@@ -5,11 +5,13 @@ import { useState, useEffect, useCallback } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import apiTheMovieDB from 'service/kino-api';
 import { toast } from 'react-toastify';
+import GenreList from 'components/GanreList/GanreList';
 
 function HomePage() {
   const [movies, setMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [isFetching, setIsFetching] = useState(false);
+  const [genres, setGenres] = useState([]);
 
   const fetchMovies = useCallback(() => {
     setIsFetching(true);
@@ -36,9 +38,19 @@ function HomePage() {
     }
   }, [movies, fetchMovies]);
 
+  useEffect(() => {
+    apiTheMovieDB
+      .fetchAllgenres()
+      .then(data => {
+        setGenres(data);
+      })
+      .catch('error');
+  }, []);
+
   return (
     <section className={css.trandingMovies}>
       <Container>
+        <GenreList genres={genres} />
         <InfiniteScroll
           dataLength={movies.length}
           next={fetchMovies}

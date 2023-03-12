@@ -1,7 +1,7 @@
 import css from './MoviesItem.module.css';
 import posterimg from '../../images/poster.jpeg';
 
-function MoviesItem({ poster_path, title }) {
+function MoviesItem({ poster_path, title, popularity, vote_average }) {
   return (
     <>
       <div className={css.cardWrapper}>
@@ -17,6 +17,13 @@ function MoviesItem({ poster_path, title }) {
         <h3 className={css.cardTitle}>
           {title ? title : 'Movie without a title'}
         </h3>
+        <p className={css.ganreListDetailsMain}>
+          {popularity && <span>{(popularity * 0.1).toFixed(0)}%</span>}
+        </p>
+        <p>{vote_average.toFixed(1)}</p>
+        <p>
+          <span>&#9733;</span>
+        </p>
       </div>
     </>
   );

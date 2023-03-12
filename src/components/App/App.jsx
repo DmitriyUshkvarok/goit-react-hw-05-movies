@@ -13,6 +13,7 @@ const MoviesDetalis = lazy(() =>
 );
 const CastMovie = lazy(() => import('../Cast/Cast'));
 const Reviews = lazy(() => import('../Reviews/Reviews'));
+const GenresPage = lazy(() => import('../../pages/GenresPage/GenrePage'));
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="cast" element={<CastMovie />} />
             <Route path="review" element={<Reviews />} />
           </Route>
+          <Route path="/genre/:id" element={<GenresPage />} />
           <Route path="*" element={<HomePage />} />
         </Routes>
       </Suspense>

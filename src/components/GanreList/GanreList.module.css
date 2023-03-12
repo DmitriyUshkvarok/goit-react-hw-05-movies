@@ -1,0 +1,28 @@
+.ganreList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.ganreListItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    background: #603813;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #b29f94, #603813);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #b29f94, #603813);
+    padding: 10px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    color: rgb(21, 20, 20);
+    text-transform: uppercase;
+}

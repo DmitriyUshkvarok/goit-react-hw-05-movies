@@ -7,13 +7,21 @@ function MoviesList({ movies }) {
   const location = useLocation();
   return (
     <ul className={css.moviesList}>
-      {movies.map(({ id, poster_path, title }, index) => (
-        <li key={`${id}-${index}`} className={css.moviesItem}>
-          <Link to={`/movies/${id}`} state={{ from: location }}>
-            <MoviesItem id={id} poster_path={poster_path} title={title} />
-          </Link>
-        </li>
-      ))}
+      {movies.map(
+        ({ id, poster_path, title, popularity, vote_average }, index) => (
+          <li key={`${id}-${index}`} className={css.moviesItem}>
+            <Link to={`/movies/${id}`} state={{ from: location }}>
+              <MoviesItem
+                id={id}
+                poster_path={poster_path}
+                title={title}
+                popularity={popularity}
+                vote_average={vote_average}
+              />
+            </Link>
+          </li>
+        )
+      )}
     </ul>
   );
 }
@@ -25,6 +33,8 @@ MoviesList.propTypes = {
       id: PropTypes.number.isRequired,
       poster_path: PropTypes.string,
       title: PropTypes.string,
+      popularity: PropTypes.number.isRequired,
+      vote_average: PropTypes.number.isRequired,
     })
   ).isRequired,
 };

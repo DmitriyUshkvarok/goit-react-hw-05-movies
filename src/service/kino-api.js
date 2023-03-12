@@ -39,6 +39,20 @@ function fetchTrailerMovies(movieId) {
     .catch(this.onError);
 }
 
+function fetchAllgenres() {
+  return axios
+    .get(`${URL}/genre/movie/list?api_key=${key}`)
+    .then(response => response.data.genres)
+    .catch(this.onError);
+}
+
+function fetchByGenre(id, page) {
+  return axios
+    .get(`${URL}/discover/movie?api_key=${key}&with_genres=${id}&page=${page}`)
+    .then(response => response.data)
+    .catch(this.onError);
+}
+
 const apiTheMovieDB = {
   fetchTrending,
   fetchSearchMovie,
@@ -46,6 +60,8 @@ const apiTheMovieDB = {
   fetchMovieCredits,
   fetchMovieReview,
   fetchTrailerMovies,
+  fetchAllgenres,
+  fetchByGenre,
 };
 
 export default apiTheMovieDB;
