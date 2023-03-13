@@ -13,7 +13,7 @@ const MoviePage = () => {
   const location = useLocation();
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   const [hasMore, setHasMore] = useState(false);
 
   const fetchMovies = useCallback(
@@ -23,14 +23,15 @@ const MoviePage = () => {
         .fetchSearchMovie(query, page)
         .then(newMovies => {
           if (newMovies.length === 0) {
-            toast.error('sorry ,thats all the movies we cold find');
+            toast.error("sorry, that's all the movies we could find");
             setHasMore(false);
+          } else {
+            setMovies(prevMovies => [...prevMovies, ...newMovies]);
+            setCurrentPage(page);
           }
-          setMovies(prevMovies => [...prevMovies, ...newMovies]);
-          setCurrentPage(prevPage => prevPage + 1);
         })
         .catch(error => {
-          console.error(error);
+          toast.error('Failed to fetch movies.');
         });
     },
     [query]
@@ -38,6 +39,7 @@ const MoviePage = () => {
 
   useEffect(() => {
     setQuery(new URLSearchParams(location.search).get('query'));
+    setCurrentPage(1);
   }, [location.search]);
 
   useEffect(() => {
@@ -56,7 +58,7 @@ const MoviePage = () => {
   };
 
   const handleLoadMore = () => {
-    fetchMovies(currentPage);
+    fetchMovies(currentPage + 1);
   };
 
   return (

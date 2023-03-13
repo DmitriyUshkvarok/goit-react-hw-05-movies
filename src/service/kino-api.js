@@ -46,7 +46,7 @@ function fetchAllgenres() {
     .catch(this.onError);
 }
 
-function fetchByGenre(id, page) {
+function fetchByGenre(id, page = 1) {
   return axios
     .get(`${URL}/discover/movie?api_key=${key}&with_genres=${id}&page=${page}`)
     .then(response => response.data)

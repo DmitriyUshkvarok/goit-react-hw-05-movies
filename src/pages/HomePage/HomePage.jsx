@@ -12,31 +12,37 @@ function HomePage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [isFetching, setIsFetching] = useState(false);
   const [genres, setGenres] = useState([]);
+  const [mounted, setMounted] = useState(false);
 
-  const fetchMovies = useCallback(() => {
+  const fetchMovies = useCallback(page => {
     setIsFetching(true);
 
     apiTheMovieDB
-      .fetchTrending(currentPage)
+      .fetchTrending(page)
       .then(newMovies => {
         setIsFetching(false);
         if (newMovies.length === 0) {
-          toast.error('sorry ,thats all the movies we cold find');
+          toast.error("sorry, that's all the movies we could find");
         }
 
         setMovies(prevMovies => [...prevMovies, ...newMovies]);
-        setCurrentPage(prevPage => prevPage + 1);
+        setCurrentPage(page);
       })
       .catch(error => {
         setIsFetching(false);
       });
-  }, [currentPage]);
+  }, []);
 
   useEffect(() => {
-    if (movies.length === 0) {
-      fetchMovies();
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
+
+  useEffect(() => {
+    if (mounted && movies.length === 0) {
+      fetchMovies(currentPage);
     }
-  }, [movies, fetchMovies]);
+  }, [currentPage, fetchMovies, movies.length, mounted]);
 
   useEffect(() => {
     apiTheMovieDB
@@ -53,7 +59,7 @@ function HomePage() {
         <GenreList genres={genres} />
         <InfiniteScroll
           dataLength={movies.length}
-          next={fetchMovies}
+          next={() => fetchMovies(currentPage + 1)}
           hasMore={!isFetching}
           loader={<p>Loading...</p>}
         >
