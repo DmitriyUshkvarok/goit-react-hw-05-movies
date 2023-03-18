@@ -14,6 +14,7 @@ const MoviesDetalis = lazy(() =>
 const CastMovie = lazy(() => import('../Cast/Cast'));
 const Reviews = lazy(() => import('../Reviews/Reviews'));
 const GenresPage = lazy(() => import('../../pages/GenresPage/GenrePage'));
+const ActorsPage = lazy(() => import('../../pages/ActorsPage/ActorsPage'));
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="movies" element={<MoviesPage />} />
+          <Route path="movie/actors/" element={<ActorsPage />} />
           <Route path="/movies/:movieId" element={<MoviesDetalis />}>
             <Route path="cast" element={<CastMovie />} />
             <Route path="review" element={<Reviews />} />

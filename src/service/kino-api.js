@@ -35,23 +35,35 @@ function fetchMovieReview(id) {
 function fetchTrailerMovies(movieId) {
   return axios
     .get(`${URL}movie/${movieId}/videos?api_key=${key}`)
-    .then(response => response.data.results)
-    .catch(this.onError);
+    .then(response => response.data.results);
 }
 
 function fetchAllgenres() {
   return axios
     .get(`${URL}/genre/movie/list?api_key=${key}`)
-    .then(response => response.data.genres)
-    .catch(this.onError);
+    .then(response => response.data.genres);
 }
 
 function fetchByGenre(id, page = 1) {
   return axios
     .get(`${URL}/discover/movie?api_key=${key}&with_genres=${id}&page=${page}`)
-    .then(response => response.data)
-    .catch(this.onError);
+    .then(response => response.data);
 }
+
+function fetchActors(page = 1) {
+  return axios
+    .get(`${URL}person/popular?api_key=${key}&page=${page}`)
+    .then(response => response.data.results);
+}
+
+function fetchByYear(page = 1, selectedYear) {
+  return axios
+    .get(
+      `${URL}discover/movie?api_key=${key}&sort_by=popularity.desc&page=${page}&primary_release_year=${selectedYear}`
+    )
+    .then(response => response.data.results);
+}
+// fetchByYear();
 
 const apiTheMovieDB = {
   fetchTrending,
@@ -62,6 +74,8 @@ const apiTheMovieDB = {
   fetchTrailerMovies,
   fetchAllgenres,
   fetchByGenre,
+  fetchActors,
+  fetchByYear,
 };
 
 export default apiTheMovieDB;

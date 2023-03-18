@@ -27,21 +27,26 @@ function MoviesItem({ poster_path, title, vote_average }) {
   return (
     <>
       <div className={css.cardWrapper}>
-        <img
-          src={
-            poster_path
-              ? `https://image.tmdb.org/t/p/w500/${poster_path}`
-              : posterimg
-          }
-          alt={title}
-          width={300}
-        />
+        <div className={css.imgWrapper}>
+          <img
+            className={css.moviesImg}
+            src={
+              poster_path
+                ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+                : posterimg
+            }
+            alt={title}
+            width={150}
+          />
+        </div>
         <h3 className={css.cardTitle}>
           {title ? title : 'Movie without a title'}
         </h3>
-        <div className={css.ratingStars}>
-          <span>Rating:{ratingStars}</span>
-          <span>{vote_average.toFixed(1)}</span>
+        <div className={css.ratingStarsContainer}>
+          <p className={css.ratingText}>{vote_average ? ratingStars : 'N/A'}</p>
+          <span className={css.ratingNumber}>
+            {vote_average ? vote_average.toFixed(1) : 'N/A'}
+          </span>
         </div>
       </div>
     </>

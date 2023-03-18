@@ -6,6 +6,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import apiTheMovieDB from 'service/kino-api';
 import { toast } from 'react-toastify';
 import GenreList from 'components/GanreList/GanreList';
+import MainForm from 'components/MainForm/MainForm';
 
 function HomePage() {
   const [movies, setMovies] = useState([]);
@@ -54,19 +55,26 @@ function HomePage() {
   }, []);
 
   return (
-    <section className={css.trandingMovies}>
-      <Container>
-        <GenreList genres={genres} />
-        <InfiniteScroll
-          dataLength={movies.length}
-          next={() => fetchMovies(currentPage + 1)}
-          hasMore={!isFetching}
-          loader={<p>Loading...</p>}
-        >
-          <MoviesList movies={movies} />
-        </InfiniteScroll>
-      </Container>
-    </section>
+    <Container>
+      <GenreList genres={genres} />
+      <section className={css.trandingMovies}>
+        <div className={css.mainWrapper}>
+          <div className={css.mainMoviesColumn}>
+            <InfiniteScroll
+              dataLength={movies.length}
+              next={() => fetchMovies(currentPage + 1)}
+              hasMore={!isFetching}
+              loader={<p>Loading...</p>}
+            >
+              <MoviesList movies={movies} />
+            </InfiniteScroll>
+          </div>
+          <div className={css.mainFormColumn}>
+            <MainForm />
+          </div>
+        </div>
+      </section>
+    </Container>
   );
 }
 

@@ -1,8 +1,9 @@
 import { GiReturnArrow } from 'react-icons/gi';
 import css from './MovieDetalis.module.css';
+import { toast } from 'react-toastify';
 import Container from 'components/Container/Container';
 import { useParams, useLocation, Link, Outlet } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import apiTheMovieDB from 'service/kino-api';
 import posterimg from '../../images/poster.jpeg';
 import YouTube from 'react-youtube';
@@ -21,6 +22,10 @@ function MovieDetalis() {
       if (trailer) {
         setTrailerId(trailer.key);
         setUrlModal(true);
+        document.body.style.overflow = 'hidden';
+      } else {
+        setUrlModal(false);
+        toast.error('No trailer available for this movie.');
       }
     });
   }
@@ -45,19 +50,18 @@ function MovieDetalis() {
   function closeModal() {
     setUrlModal(false);
     setTrailerId(null);
+    document.body.style.overflow = 'auto';
   }
 
   const clickBackdrop = e => {
     if (e.currentTarget === e.target) {
-      setUrlModal(false);
-      setTrailerId(null);
+      closeModal();
     }
   };
 
   const clickKeyDown = e => {
     if (e.code === 'Escape') {
-      setUrlModal(false);
-      setTrailerId(null);
+      closeModal();
     }
   };
 
@@ -111,7 +115,7 @@ function MovieDetalis() {
                   style={{ cursor: 'pointer' }}
                   onClick={handleFetchTrailer}
                 />
-                {urlModal && trailerId && (
+                {urlModal && trailerId ? (
                   <div className={css.videoBackdrop} onClick={clickBackdrop}>
                     <GiReturnArrow
                       className={css.iconBackModal}
@@ -138,6 +142,8 @@ function MovieDetalis() {
                       }}
                     />
                   </div>
+                ) : (
+                  <p>No trailer available for this movie.</p>
                 )}
               </div>
             </div>
@@ -154,7 +160,9 @@ function MovieDetalis() {
                 </Link>
               </li>
             </ul>
-            <Outlet />
+            <Suspense>
+              <Outlet />
+            </Suspense>
           </Container>
         </section>
       )}

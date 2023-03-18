@@ -31,7 +31,7 @@ MoviesList.propTypes = {
       id: PropTypes.number.isRequired,
       poster_path: PropTypes.string,
       title: PropTypes.string,
-      vote_average: PropTypes.number.isRequired,
+      vote_average: PropTypes.number,
     })
   ).isRequired,
 };

@@ -7,6 +7,7 @@ import MoviesList from 'components/MoviesList/MoviesList';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import apiTheMovieDB from 'service/kino-api';
 import { toast } from 'react-toastify';
+import MoviesBar from 'components/MoviesBar/MoviesBar';
 
 const MoviePage = () => {
   const navigate = useNavigate();
@@ -65,6 +66,7 @@ const MoviePage = () => {
     <section className={css.searchbar}>
       <Container>
         <Searchbar onSubmit={handleFormSubmit} />
+        <MoviesBar />
         {movies && (
           <InfiniteScroll
             dataLength={movies.length}
