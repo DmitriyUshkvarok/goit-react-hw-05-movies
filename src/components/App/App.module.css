@@ -18,7 +18,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: darkorange;
+    background: #232526;
+    background: -webkit-linear-gradient(to right, #414345, #232526);
+    background: linear-gradient(to right, #414345, #232526);
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
@@ -26,9 +28,9 @@
 }
 
 .scrolltotop svg {
-    fill: lightgreen;
+    fill: gold;
 }
 
-.scrolltotop:hover {
+/* .scrolltotop:hover {
     background-color: darkorange;
-}
+} */

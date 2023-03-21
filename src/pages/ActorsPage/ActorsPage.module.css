@@ -1,0 +1,64 @@
+.actorList {
+    margin-top: 90px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.actorListItem {
+    max-width: 220px;
+    border: 1px solid gold;
+    padding: 10px;
+    background: #232526;
+    background: -webkit-linear-gradient(to right, #414345, #232526);
+    background: linear-gradient(to right, #414345, #232526);
+}
+
+.actorsName {
+    max-width: 200px;
+    color: rgb(36, 35, 35);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.actorsDepartment {
+    color: rgb(36, 35, 35);
+    font-size: 14px;
+}
+
+.actorsRating {
+    color: green;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.page {
+    margin: 0 0.5rem;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.previous,
+.next {
+    margin: 0 0.5rem;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}

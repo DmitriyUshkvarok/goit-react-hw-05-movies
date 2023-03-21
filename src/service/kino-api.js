@@ -53,7 +53,7 @@ function fetchByGenre(id, page = 1) {
 function fetchActors(page = 1) {
   return axios
     .get(`${URL}person/popular?api_key=${key}&page=${page}`)
-    .then(response => response.data.results);
+    .then(response => response.data);
 }
 
 function fetchByYear(page = 1, selectedYear) {
@@ -63,7 +63,6 @@ function fetchByYear(page = 1, selectedYear) {
     )
     .then(response => response.data.results);
 }
-// fetchByYear();
 
 const apiTheMovieDB = {
   fetchTrending,

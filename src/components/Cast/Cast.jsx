@@ -45,7 +45,7 @@ function CastMovie() {
                     : posterimg
                 }
                 alt={name}
-                width={300}
+                width={200}
               />
               <p className={css.castName}>{name}</p>
             </li>

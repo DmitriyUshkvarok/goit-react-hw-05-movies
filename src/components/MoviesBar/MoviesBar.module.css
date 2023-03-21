@@ -1,0 +1,20 @@
+.movieBarWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.movieBarList {
+    display: flex;
+}
+
+.movieBarListItem {
+    margin-bottom: 10px;
+}
+
+.movieBarListItem a {
+    color: rgb(162, 158, 158);
+    font-size: 16px;
+    text-decoration: underline;
+}

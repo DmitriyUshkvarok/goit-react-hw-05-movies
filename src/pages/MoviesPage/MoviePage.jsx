@@ -63,22 +63,26 @@ const MoviePage = () => {
   };
 
   return (
-    <section className={css.searchbar}>
+    <>
       <Container>
-        <Searchbar onSubmit={handleFormSubmit} />
-        <MoviesBar />
-        {movies && (
-          <InfiniteScroll
-            dataLength={movies.length}
-            next={handleLoadMore}
-            hasMore={hasMore}
-            loader={<p>Loading...</p>}
-          >
-            <MoviesList movies={movies} />
-          </InfiniteScroll>
-        )}
+        <section className={css.searchbar}>
+          <Searchbar onSubmit={handleFormSubmit} />
+          <MoviesBar />
+        </section>
+        <section className={css.moviesListSearch}>
+          {movies && (
+            <InfiniteScroll
+              dataLength={movies.length}
+              next={handleLoadMore}
+              hasMore={hasMore}
+              loader={<p>Loading...</p>}
+            >
+              <MoviesList movies={movies} />
+            </InfiniteScroll>
+          )}
+        </section>
       </Container>
-    </section>
+    </>
   );
 };
 

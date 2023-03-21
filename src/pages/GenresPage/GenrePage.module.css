@@ -1,0 +1,12 @@
+.genreListMoviesContainer {
+    margin-top: 80px;
+}
+
+.genreTitle {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(182, 174, 174);
+    text-transform: uppercase;
+}

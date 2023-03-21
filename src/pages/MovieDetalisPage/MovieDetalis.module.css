@@ -2,12 +2,13 @@
     position: relative;
 }
 
+
 .posrerMovie {
     position: absolute;
-    width: 95%;
+    width: 50%;
     height: auto;
-    top: 0;
-    left: 50%;
+    top: 80px;
+    left: 30%;
     z-index: -1;
     transform: translate(-50%, 0);
     opacity: 0.2;
@@ -26,7 +27,7 @@
 .detalisWrapper {
     display: flex;
     justify-content: space-between;
-    padding-top: 30px;
+    padding-top: 110px;
 }
 
 .columnInfo {
@@ -64,33 +65,33 @@
 
 .infoTitle {
     font-size: 70px;
-    color: rgb(60, 55, 55);
+    color: rgb(182, 174, 174);
     margin-bottom: 50px;
 }
 
 .scoreDetalis {
     font-size: 20px;
-    color: rgb(152, 192, 31);
+    color: gold;
     margin-bottom: 10px;
 }
 
 .overviewTitle {
     font-size: 40px;
-    color: rgb(60, 55, 55);
+    color: rgb(182, 174, 174);
     margin-bottom: 10px;
 }
 
 .overview {
     max-width: 600px;
     font-size: 20px;
-    color: rgb(60, 55, 55);
+    color: rgb(182, 174, 174);
     margin-bottom: 10px;
 }
 
 .ganreListDetails {
     display: flex;
     gap: 10px;
-    color: rgb(152, 192, 31);
+    color: gold;
 }
 
 .columnImg {
@@ -179,7 +180,7 @@
 .cast,
 .review {
     font-size: 30px;
-    color: rgb(60, 55, 55);
+    color: gold;
     transition: color 0.4s;
     -webkit-transition: color 0.4s;
     -moz-transition: color 0.4s;

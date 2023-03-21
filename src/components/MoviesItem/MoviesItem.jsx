@@ -36,7 +36,7 @@ function MoviesItem({ poster_path, title, vote_average }) {
                 : posterimg
             }
             alt={title}
-            width={150}
+            width={300}
           />
         </div>
         <h3 className={css.cardTitle}>

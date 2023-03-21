@@ -3,19 +3,23 @@ import css from './SearchByYear.module.css';
 import apiTheMovieDB from 'service/kino-api';
 import { toast } from 'react-toastify';
 import MoviesList from 'components/MoviesList/MoviesList';
+import ButtonLoadMore from 'components/ButtonLoadMore/ButtonLoadMore';
 
 function SearchByYears() {
   const [selectedYear, setSelectedYear] = useState(0);
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
     if (selectedYear !== 0) {
       const fetchMovies = async () => {
         setLoading(true);
+        setShowButton(true);
         try {
-          const newYear = await apiTheMovieDB.fetchByYear(1, selectedYear);
+          const newYear = await apiTheMovieDB.fetchByYear(page, selectedYear);
           setMovies(newYear);
           if (newYear.length === 0) {
             toast.error("sorry, that's all the movies we could find");
@@ -29,7 +33,7 @@ function SearchByYears() {
 
       fetchMovies();
     }
-  }, [selectedYear]);
+  }, [page, selectedYear]);
 
   if (error) {
     return <p>{error.message}</p>;
@@ -41,11 +45,18 @@ function SearchByYears() {
     yearOptions.push(year);
   }
 
+  const hendleIncrement = () => {
+    setPage(page + 1);
+  };
+
   return (
     <>
       <div className={css.selectedYear}>
-        <label htmlFor="year-select">Select a year:</label>
+        <label className={css.selectLabel} htmlFor="year-select">
+          Select a year:
+        </label>
         <select
+          className={css.selectYear}
           name="year-select"
           id="year-select"
           value={selectedYear}
@@ -64,8 +75,9 @@ function SearchByYears() {
       ) : loading ? (
         <p>Loading...</p>
       ) : (
-        <p>Please select a year to see movies.</p>
+        <p className={css.searchText}>Please select a year to see movies.</p>
       )}
+      {showButton && <ButtonLoadMore hendleIncrement={hendleIncrement} />}
     </>
   );
 }

@@ -6,3 +6,21 @@
     flex-wrap: wrap;
     gap: 15px;
 }
+
+.castItem {
+    border: 1px solid gold;
+    max-width: 220px;
+    padding: 10px;
+    background: #232526;
+    background: -webkit-linear-gradient(to right, #414345, #232526);
+    background: linear-gradient(to right, #414345, #232526);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.castName {
+    color: #858888;
+}

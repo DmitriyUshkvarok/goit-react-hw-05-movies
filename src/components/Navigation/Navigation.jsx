@@ -11,6 +11,9 @@ function Navigation() {
         <NavLink className={css.navigationLink} to="/movies">
           Movies
         </NavLink>
+        <NavLink className={css.navigationLink} to="/registration">
+          Registration
+        </NavLink>
       </nav>
     </div>
   );

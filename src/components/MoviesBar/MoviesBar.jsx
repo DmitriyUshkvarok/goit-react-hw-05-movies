@@ -8,11 +8,15 @@ function MoviesBar() {
   return (
     <div className={css.movieBarWrapper}>
       <ul className={css.movieBarList}>
-        <Link to={`/movie/actors/`} state={{ from: location }}>
-          <li className={css.movieBarListItem}>Actors</li>
-        </Link>
-        <SearchByYears />
+        <li className={css.movieBarListItem}>
+          <Link to={`/movie/actors/`} state={{ from: location }}>
+            Actors
+          </Link>
+        </li>
       </ul>
+      <div>
+        <SearchByYears />
+      </div>
     </div>
   );
 }
