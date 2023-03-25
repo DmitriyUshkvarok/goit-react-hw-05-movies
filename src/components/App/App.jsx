@@ -19,6 +19,10 @@ const RegistrationPage = lazy(() =>
   import('../../pages/RegistrationPage/RegistrationPage')
 );
 
+const ActorsMoviePage = lazy(() =>
+  import('../../pages/ActorsMoviePage/ActorsMoviePage')
+);
+
 function App() {
   return (
     <>
@@ -31,6 +35,7 @@ function App() {
           <Route path="movies" element={<MoviesPage />} />
           <Route path="registration" element={<RegistrationPage />} />
           <Route path="movie/actors/" element={<ActorsPage />} />
+          <Route path="actors/movies/:id" element={<ActorsMoviePage />} />
           <Route path="/movies/:movieId" element={<MoviesDetalis />}>
             <Route path="cast" element={<CastMovie />} />
             <Route path="review" element={<Reviews />} />

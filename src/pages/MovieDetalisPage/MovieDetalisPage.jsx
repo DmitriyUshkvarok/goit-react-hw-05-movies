@@ -12,9 +12,10 @@ function MovieDetalis() {
   const { movieId } = useParams();
   const location = useLocation();
   const [movie, setMovie] = useState([]);
-  const backLink = location.state?.from ?? '/';
   const [trailerId, setTrailerId] = useState(null);
   const [urlModal, setUrlModal] = useState(false);
+
+ const backLink = location.state?.from ?? '/';
 
   function handleFetchTrailer() {
     apiTheMovieDB.fetchTrailerMovies(movieId).then(videos => {

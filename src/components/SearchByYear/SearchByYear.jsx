@@ -4,6 +4,9 @@ import apiTheMovieDB from 'service/kino-api';
 import { toast } from 'react-toastify';
 import MoviesList from 'components/MoviesList/MoviesList';
 import ButtonLoadMore from 'components/ButtonLoadMore/ButtonLoadMore';
+import Select from 'react-select';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFilm } from '@fortawesome/free-solid-svg-icons';
 
 function SearchByYears() {
   const [selectedYear, setSelectedYear] = useState(0);
@@ -50,26 +53,29 @@ function SearchByYears() {
   };
 
   return (
-    <>
+    <div className={css.selectedWrapper}>
       <div className={css.selectedYear}>
         <label className={css.selectLabel} htmlFor="year-select">
           Select a year:
         </label>
-        <select
-          className={css.selectYear}
-          name="year-select"
-          id="year-select"
-          value={selectedYear}
-          onChange={event => setSelectedYear(event.target.value)}
-        >
-          <option value={0}>Select a year</option>
-          {yearOptions.map(year => (
-            <option value={year} key={year}>
-              {year}
-            </option>
-          ))}
-        </select>
+        <div className={css.selectWrapper}>
+          <Select
+            className={css.select}
+            classNamePrefix="react-select"
+            name="year-select"
+            id="year-select"
+            value={{ value: selectedYear, label: selectedYear }}
+            onChange={selectedOption => setSelectedYear(selectedOption.value)}
+            options={yearOptions.map(year => ({ value: year, label: year }))}
+            placeholder="Select a year"
+            menuPlacement="auto"
+          />
+          <div className={css.selectIcon}>
+            <FontAwesomeIcon icon={faFilm} />
+          </div>
+        </div>
       </div>
+
       {movies.length > 0 ? (
         <MoviesList movies={movies} />
       ) : loading ? (
@@ -78,7 +84,7 @@ function SearchByYears() {
         <p className={css.searchText}>Please select a year to see movies.</p>
       )}
       {showButton && <ButtonLoadMore hendleIncrement={hendleIncrement} />}
-    </>
+    </div>
   );
 }
 

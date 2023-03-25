@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import apiTheMovieDB from 'service/kino-api';
 import css from './Cast.module.css';
-import posterimg from '../../images/poster.jpeg';
 
 function CastMovie() {
   const { movieId } = useParams();
@@ -42,7 +41,7 @@ function CastMovie() {
                 src={
                   profile_path
                     ? `https://image.tmdb.org/t/p/w500/${profile_path}`
-                    : posterimg
+                    : 'https://via.placeholder.com/200x300'
                 }
                 alt={name}
                 width={200}

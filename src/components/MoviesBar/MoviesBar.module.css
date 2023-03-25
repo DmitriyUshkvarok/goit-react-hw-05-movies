@@ -1,12 +1,8 @@
-.movieBarWrapper {
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-    gap: 10px;
-}
-
 .movieBarList {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 .movieBarListItem {

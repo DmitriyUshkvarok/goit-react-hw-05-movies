@@ -1,5 +1,4 @@
 import css from './MoviesItem.module.css';
-import posterimg from '../../images/poster.jpeg';
 
 function MoviesItem({ poster_path, title, vote_average }) {
   const percentRating = vote_average * 10; // convert 0-10 rating to percentage
@@ -33,7 +32,7 @@ function MoviesItem({ poster_path, title, vote_average }) {
             src={
               poster_path
                 ? `https://image.tmdb.org/t/p/w500/${poster_path}`
-                : posterimg
+                : 'https://via.placeholder.com/300x400'
             }
             alt={title}
             width={300}

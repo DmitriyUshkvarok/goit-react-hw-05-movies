@@ -56,6 +56,12 @@ function fetchActors(page = 1) {
     .then(response => response.data);
 }
 
+function fetchMoviesbyActors(id, page = 1) {
+  return axios
+    .get(`${URL}person/${id}/movie_credits?api_key=${key}&page=${page}`)
+    .then(response => response.data.cast);
+}
+
 function fetchByYear(page = 1, selectedYear) {
   return axios
     .get(
@@ -65,6 +71,7 @@ function fetchByYear(page = 1, selectedYear) {
 }
 
 const apiTheMovieDB = {
+  fetchMoviesbyActors,
   fetchTrending,
   fetchSearchMovie,
   fetchMovieDetalis,
