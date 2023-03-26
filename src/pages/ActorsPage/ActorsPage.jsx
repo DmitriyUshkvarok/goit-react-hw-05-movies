@@ -5,6 +5,7 @@ import apiTheMovieDB from 'service/kino-api';
 import { toast } from 'react-toastify';
 import ReactPaginate from 'react-paginate';
 import { useLocation, Link } from 'react-router-dom';
+import ButtonBack from 'components/ButtonBack/ButtonBack';
 
 function ActorsPage() {
   const [actors, setActors] = useState([]);
@@ -64,8 +65,8 @@ function ActorsPage() {
           onChange={handleSearchChange}
         />
       </div>
-      <Link className={css.btnBack} type="button" to={backLink}>
-        Go Back
+      <Link to={backLink}>
+        <ButtonBack />
       </Link>
       {loading ? (
         <p>Loading...</p>

@@ -7,6 +7,7 @@ import { useState, useEffect, Suspense } from 'react';
 import apiTheMovieDB from 'service/kino-api';
 import posterimg from '../../images/poster.jpeg';
 import YouTube from 'react-youtube';
+import ButtonBack from 'components/ButtonBack/ButtonBack';
 
 function MovieDetalis() {
   const { movieId } = useParams();
@@ -15,7 +16,7 @@ function MovieDetalis() {
   const [trailerId, setTrailerId] = useState(null);
   const [urlModal, setUrlModal] = useState(false);
 
- const backLink = location.state?.from ?? '/';
+  const backLink = location.state?.from ?? '/';
 
   function handleFetchTrailer() {
     apiTheMovieDB.fetchTrailerMovies(movieId).then(videos => {
@@ -71,7 +72,7 @@ function MovieDetalis() {
       {movie && (
         <section className={css.detalis}>
           <img
-            className={css.posrerMovie}
+            className={css.posterMovie}
             src={
               movie.backdrop_path
                 ? `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`
@@ -80,12 +81,13 @@ function MovieDetalis() {
             alt={movie.title}
           />
           <Container>
+            <div className={css.btnBackDetalisWrapper}>
+              <Link to={backLink}>
+                <ButtonBack />
+              </Link>
+            </div>
             <div className={css.detalisWrapper}>
               <div className={css.columnInfo}>
-                <Link className={css.btnBack} type="button" to={backLink}>
-                  <GiReturnArrow className={css.iconBack} />
-                  Go Back
-                </Link>
                 <h2 className={css.infoTitle}>
                   {movie.title ? movie.title : 'Movie without a title'}
                 </h2>

@@ -1,17 +1,23 @@
 import { useState, useEffect } from 'react';
 import apiTheMovieDB from 'service/kino-api';
-// import posterimg from '../../images/poster.jpeg';
+import ButtonBack from 'components/ButtonBack/ButtonBack';
 import css from './ActorsMoviesPage.module.css';
 import { toast } from 'react-toastify';
 import Container from 'components/Container/Container';
-import { useParams } from 'react-router-dom';
 import MoviesList from 'components/MoviesList/MoviesList';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 const ActorsMoviePage = () => {
   const { id } = useParams();
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const navigate = useNavigate();
+  // eslint-disable-next-line no-unused-vars
+  const handleGoBack = () => {
+    navigate('/movie/actors/');
+  };
 
   useEffect(() => {
     apiTheMovieDB
@@ -25,7 +31,7 @@ const ActorsMoviePage = () => {
       .catch(error => {
         setError(error);
       })
-      .finally(setLoading(false));
+      .finally(() => setLoading(false));
   }, [id]);
 
   if (error) {
@@ -34,6 +40,11 @@ const ActorsMoviePage = () => {
   return (
     <>
       <Container>
+        <div className={css.btnBackWrapper}>
+          <Link to={'/movie/actors/'}>
+            <ButtonBack />
+          </Link>
+        </div>
         {loading ? (
           <p>Loading...</p>
         ) : (
