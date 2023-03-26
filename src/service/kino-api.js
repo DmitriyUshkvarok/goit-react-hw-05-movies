@@ -50,10 +50,11 @@ function fetchByGenre(id, page = 1) {
     .then(response => response.data);
 }
 
-function fetchActors(page = 1) {
-  return axios
-    .get(`${URL}person/popular?api_key=${key}&page=${page}`)
-    .then(response => response.data);
+function fetchActors(page = 1, query = '') {
+  const url = query
+    ? `${URL}search/person?api_key=${key}&page=${page}&query=${query}`
+    : `${URL}person/popular?api_key=${key}&page=${page}`;
+  return axios.get(url).then(response => response.data);
 }
 
 function fetchMoviesbyActors(id, page = 1) {

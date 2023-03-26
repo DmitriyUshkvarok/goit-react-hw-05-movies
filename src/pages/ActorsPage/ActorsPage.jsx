@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import ReactPaginate from 'react-paginate';
 import { useLocation, Link } from 'react-router-dom';
 import ButtonBack from 'components/ButtonBack/ButtonBack';
+import { throttle } from 'lodash';
 
 function ActorsPage() {
   const [actors, setActors] = useState([]);
@@ -14,15 +15,17 @@ function ActorsPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
+  const [filteredActors, setFilteredActors] = useState([]);
 
   const location = useLocation();
   const backLink = location.state?.from ?? '/';
 
   useEffect(() => {
-    const fetchActors = async () => {
+    const fetchActors = async (page, searchQuery) => {
       try {
         const { results, total_pages } = await apiTheMovieDB.fetchActors(
-          currentPage
+          page,
+          searchQuery
         );
         if (results.length === 0) {
           toast.error("sorry, that's all the actors we could find");
@@ -35,20 +38,23 @@ function ActorsPage() {
         setLoading(false);
       }
     };
-    fetchActors();
-  }, [currentPage]);
+    fetchActors(currentPage, searchQuery);
+  }, [currentPage, searchQuery]);
+
+  useEffect(() => {
+    const filtered = actors.filter(actor =>
+      actor.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredActors(filtered);
+  }, [actors, searchQuery]);
 
   const handlePageChange = ({ selected }) => {
     setCurrentPage(selected + 1);
   };
 
-  const handleSearchChange = event => {
+  const handleSearchChange = throttle(event => {
     setSearchQuery(event.target.value);
-  };
-
-  const filteredActors = actors.filter(actor =>
-    actor.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  }, 300);
 
   if (error) {
     return <p>{error.message}</p>;
