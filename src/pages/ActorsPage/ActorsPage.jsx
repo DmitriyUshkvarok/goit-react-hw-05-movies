@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import ReactPaginate from 'react-paginate';
 import { useLocation, Link } from 'react-router-dom';
 import ButtonBack from 'components/ButtonBack/ButtonBack';
-import { throttle } from 'lodash';
+import { debounce } from 'lodash';
 
 function ActorsPage() {
   const [actors, setActors] = useState([]);
@@ -52,7 +52,7 @@ function ActorsPage() {
     setCurrentPage(selected + 1);
   };
 
-  const handleSearchChange = throttle(event => {
+  const handleSearchChange = debounce(event => {
     setSearchQuery(event.target.value);
   }, 300);
 
