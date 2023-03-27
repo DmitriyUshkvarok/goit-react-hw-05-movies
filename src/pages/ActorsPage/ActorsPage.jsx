@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import ReactPaginate from 'react-paginate';
 import { useLocation, Link } from 'react-router-dom';
 import ButtonBack from 'components/ButtonBack/ButtonBack';
-import { debounce } from 'lodash';
+import DebounceInput from 'react-debounce-input';
 
 function ActorsPage() {
   const [actors, setActors] = useState([]);
@@ -52,9 +52,9 @@ function ActorsPage() {
     setCurrentPage(selected + 1);
   };
 
-  const handleSearchChange = debounce(event => {
+  const handleSearchChange = event => {
     setSearchQuery(event.target.value);
-  }, 300);
+  };
 
   if (error) {
     return <p>{error.message}</p>;
@@ -63,11 +63,13 @@ function ActorsPage() {
   return (
     <Container>
       <div className={css.search}>
-        <input
+        <DebounceInput
           className={css.inputActors}
           type="text"
           placeholder="Search actors"
           value={searchQuery}
+          minLength={2}
+          debounceTimeout={500}
           onChange={handleSearchChange}
         />
       </div>
