@@ -61,8 +61,6 @@ const ExpectedMoviesList = () => {
                 scrollbar={{ draggable: true }}
                 spaceBetween={10}
                 slidesPerView={6}
-                onSlideChange={() => console.log('slide change')}
-                onSwiper={swiper => console.log(swiper)}
               >
                 {movies.map(
                   ({ poster_path, title, id, vote_average, release_date }) => {
