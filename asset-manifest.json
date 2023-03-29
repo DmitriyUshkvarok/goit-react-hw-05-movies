@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/goit-react-hw-05-movies/static/css/main.7f775406.css",
-    "main.js": "/goit-react-hw-05-movies/static/js/main.aa73f590.js",
+    "main.js": "/goit-react-hw-05-movies/static/js/main.12c119f3.js",
     "static/css/829.8fbfbc5f.chunk.css": "/goit-react-hw-05-movies/static/css/829.8fbfbc5f.chunk.css",
-    "static/js/829.4bf69084.chunk.js": "/goit-react-hw-05-movies/static/js/829.4bf69084.chunk.js",
+    "static/js/829.b08eebab.chunk.js": "/goit-react-hw-05-movies/static/js/829.b08eebab.chunk.js",
     "static/css/309.165acb90.chunk.css": "/goit-react-hw-05-movies/static/css/309.165acb90.chunk.css",
     "static/js/309.454393eb.chunk.js": "/goit-react-hw-05-movies/static/js/309.454393eb.chunk.js",
     "static/css/992.2104c811.chunk.css": "/goit-react-hw-05-movies/static/css/992.2104c811.chunk.css",
@@ -30,9 +30,9 @@
     "static/media/iconfinder-play.svg": "/goit-react-hw-05-movies/static/media/iconfinder-play.7ab5e3455a0847cfdac9.svg",
     "index.html": "/goit-react-hw-05-movies/index.html",
     "main.7f775406.css.map": "/goit-react-hw-05-movies/static/css/main.7f775406.css.map",
-    "main.aa73f590.js.map": "/goit-react-hw-05-movies/static/js/main.aa73f590.js.map",
+    "main.12c119f3.js.map": "/goit-react-hw-05-movies/static/js/main.12c119f3.js.map",
     "829.8fbfbc5f.chunk.css.map": "/goit-react-hw-05-movies/static/css/829.8fbfbc5f.chunk.css.map",
-    "829.4bf69084.chunk.js.map": "/goit-react-hw-05-movies/static/js/829.4bf69084.chunk.js.map",
+    "829.b08eebab.chunk.js.map": "/goit-react-hw-05-movies/static/js/829.b08eebab.chunk.js.map",
     "309.165acb90.chunk.css.map": "/goit-react-hw-05-movies/static/css/309.165acb90.chunk.css.map",
     "309.454393eb.chunk.js.map": "/goit-react-hw-05-movies/static/js/309.454393eb.chunk.js.map",
     "992.2104c811.chunk.css.map": "/goit-react-hw-05-movies/static/css/992.2104c811.chunk.css.map",
@@ -58,6 +58,6 @@
   },
   "entrypoints": [
     "static/css/main.7f775406.css",
-    "static/js/main.aa73f590.js"
+    "static/js/main.12c119f3.js"
   ]
 }
