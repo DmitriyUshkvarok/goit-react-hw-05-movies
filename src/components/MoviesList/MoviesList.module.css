@@ -9,13 +9,10 @@
 
 .moviesItem {
     border: 1px solid gold;
+    border-radius: 5px;
     max-width: 320px;
     padding: 10px;
     background: #232526;
     background: -webkit-linear-gradient(to right, #414345, #232526);
     background: linear-gradient(to right, #414345, #232526);
 }
-
-/* .MoviesList_moviesItem {
-    width: 200px;
-} */

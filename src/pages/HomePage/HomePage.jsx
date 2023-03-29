@@ -6,6 +6,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import apiTheMovieDB from 'service/kino-api';
 import { toast } from 'react-toastify';
 import GenreList from 'components/GanreList/GanreList';
+import ExpectedMoviesList from 'components/ExpectedMoviesList/ExpectedMoviesList';
 
 function HomePage() {
   const [movies, setMovies] = useState([]);
@@ -55,6 +56,7 @@ function HomePage() {
 
   return (
     <Container>
+      <ExpectedMoviesList />
       <GenreList genres={genres} />
       <section className={css.trandingMovies}>
         <InfiniteScroll

@@ -71,6 +71,12 @@ function fetchByYear(page = 1, selectedYear) {
     .then(response => response.data.results);
 }
 
+function fetchExpectedMovies() {
+  return axios
+    .get(`${URL}/movie/upcoming?api_key=${key}`)
+    .then(response => response.data.results);
+}
+
 const apiTheMovieDB = {
   fetchMoviesbyActors,
   fetchTrending,
@@ -83,6 +89,7 @@ const apiTheMovieDB = {
   fetchByGenre,
   fetchActors,
   fetchByYear,
+  fetchExpectedMovies,
 };
 
 export default apiTheMovieDB;
